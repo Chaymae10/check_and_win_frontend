@@ -1,4 +1,4 @@
-import logo from "../../img/logo.png";
+import logo from "../../img/logoWebsite.png";
 import { getSessionObject } from "../../utils/session";
 const Navbar = () => {
   const navbarWrapper = document.getElementById("navbarWrapper");
