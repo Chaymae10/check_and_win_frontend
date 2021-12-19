@@ -9,9 +9,12 @@ const ProfilPage = async () => {
   pageDiv.style.backgroundColor = "rgb(254, 193, 29)";
   pageDiv.innerHTML = "";
   let txtHtmlForScore = " ";
+  //get authentificated user data 
   const userData = getSessionObject("user");
+  //get the user's max score 
   const userScore = await getMaxScore();
   let userName = userData.username;
+  //Display user's score 
   let textHtmlForScore = () => {
     if (userScore.maxScore === 0) {
       txtHtmlForScore = `N'oublie pas de jouer pour avoir un score`;
@@ -20,7 +23,7 @@ const ProfilPage = async () => {
     }
     return txtHtmlForScore;
   };
-
+  //the main content of the profil page
   let content = `
     <div class="container-profil "> 
     
@@ -48,15 +51,18 @@ const ProfilPage = async () => {
     `;
 
   pageDiv.innerHTML = content;
+  
 
+  //welcome message
   let text = document.querySelector(".helloProfile");
+  //separate every single letter of the messege  in a span tag to animate it later 
   text.innerHTML = text.innerText
     .split("")
     .map(function (char) {
       return `<span class="fs-2 text-danger pProfilePage ">${char}</span>`;
     })
     .join("");
-
+  //Animejs to animate the  welcome message 
   anime.timeline({ loop: true }).add({
     targets: ".helloProfile",
     translateX: [60, 0],
@@ -68,11 +74,11 @@ const ProfilPage = async () => {
       return 500 + 30 * i;
     },
   });
-
+  //Change username
   const changeUserNameDiv = document.getElementById("ChangeUserName");
+  //use the button in purpose to display the form only if the user clicks on it 
   const buttonChangeUserName = document.getElementById("userName");
   buttonChangeUserName.addEventListener("click", displayUpdateUsernameForm);
-
   function displayUpdateUsernameForm(e) {
     e.preventDefault();
     let changeUserNameForm = `
@@ -84,9 +90,10 @@ const ProfilPage = async () => {
     `;
     changeUserNameDiv.innerHTML = changeUserNameForm;
     const updateUsernameForm = document.getElementById("changeUserNameForm");
+    //Add an event listener to the form on submit
     updateUsernameForm.addEventListener("submit", ChangeUsername);
   }
-
+  // on submit , a request is sent to our api to change the username
   async function ChangeUsername(e) {
     e.preventDefault();
     const nUserName = document.getElementById("nUserName").value;
@@ -122,11 +129,12 @@ const ProfilPage = async () => {
       console.error("UPDATE USERNAME :: error", error);
     }
   }
-
+  //Change password 
   const changePasswordDiv = document.getElementById("ChangePassword");
+  //A button to display password changing form 
   const buttonChangePassword = document.getElementById("password");
   buttonChangePassword.addEventListener("click", displayUpdatePasswordForm);
-
+  //display a form to change the password and adding an event listener on it 
   function displayUpdatePasswordForm(e) {
     e.preventDefault();
     let changePasswordForm = `
@@ -141,7 +149,7 @@ const ProfilPage = async () => {
     const updatePasswordForm = document.getElementById("changePasswordForm");
     updatePasswordForm.addEventListener("submit", changePassword);
   }
-
+  //On submit a request is sent to the api using 
   async function changePassword(e) {
     e.preventDefault();
     const nPassword = document.getElementById("newPassword").value;
@@ -171,7 +179,7 @@ const ProfilPage = async () => {
       console.error("UPDATE Password :: error", error);
     }
   }
-
+  //fetch users score from the api 
   async function getMaxScore() {
     try {
       const username = getSessionObject("user").username;
@@ -189,6 +197,7 @@ const ProfilPage = async () => {
       console.log("getMaxScore :: error" + error);
     }
   }
+  //display an alert box and throw an error if the fetch failed 
   function showErrorPwd() {
     const alertDiv = document.getElementById("alertUpdatePwd");
     alertDiv.innerHTML = `<br><div class="alert alert-danger" role="alert">
