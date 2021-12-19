@@ -7,6 +7,7 @@ const HelpPage = () => {
     body.style.backgroundColor = "rgb(254, 193, 29)";
     pageDiv.style.backgroundColor = "rgb(254, 193, 29)";
     pageDiv.innerHTML = "";
+    //the main content of the Help pAGE 
     let htmlText = `<div class="container">
     <div class="row">
       	<img src="${pouletto}" class="col-3">

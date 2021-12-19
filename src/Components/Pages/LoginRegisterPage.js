@@ -9,8 +9,8 @@ const LoginRegisterPage = () => {
   const page = document.getElementById("myPage");
   body.style.backgroundColor = "white";
   page.style.backgroundColor = "white";
-
   page.innerHTML = "";
+  //ADD html code of the content in a variable 
   let content = `<img id=logo class="mx-auto d-block img-fluide mb-5 mt-5" src="${logo}"><div class="container" id="container">
 	<div class="form-container sign-up-container">
 		<form id="registerForm">
@@ -45,16 +45,16 @@ const LoginRegisterPage = () => {
 		</div>
 	</div>
 </div>`;
-
+  //Add the content to the LoginRegister page
   page.innerHTML = content;
   const signUpButton = document.getElementById("signUp");
   const signInButton = document.getElementById("signIn");
   const container = document.getElementById("container");
-
+  //Show the hiddden register form
   signUpButton.addEventListener("click", () => {
     container.classList.add("right-panel-active");
   });
-
+  //Show the hidden login form
   signInButton.addEventListener("click", () => {
     container.classList.remove("right-panel-active");
   });
@@ -63,7 +63,7 @@ const LoginRegisterPage = () => {
   const registerForm = document.getElementById("registerForm");
   loginForm.addEventListener("submit", onSubmitLogin);
   registerForm.addEventListener("submit", onSubmitRegister);
-
+  //fetch api to send a request to our backend to resove user's login 
   async function onSubmitLogin(e) {
     e.preventDefault();
     const userLogin = document.getElementById("usernameLogin").value;
@@ -94,6 +94,7 @@ const LoginRegisterPage = () => {
       console.error("login::error", error);
     }
   }
+  //fetch api to send a request to our backend to create an account for the user
   async function onSubmitRegister(e) {
     e.preventDefault();
 
@@ -127,7 +128,7 @@ const LoginRegisterPage = () => {
     }
   }
 };
-
+// display an alert and throw an errror if the fetch went wrong 
 function showErrorLogin() {
   console.log("alert");
   const alertDiv = document.getElementById("alertLogin");

@@ -7,12 +7,12 @@ const ScorePage = async () => {
   body.style.backgroundColor = "rgb(254, 193, 29)";
   page.style.backgroundColor = "rgb(254, 193, 29)";
   page.innerHTML = "";
-
+  //fetch data from our api
   const res = await fetch("/api/scores/top");
   const response = await res.json();
   page.innerHTML = "";
   let htmlTable = "";
-
+  //Atable that will contain the fetched data
   htmlTable = `
   <canvas class="fireworks"></canvas>
   <div> <img src="${winIcone}" width=780px> </div>
@@ -27,7 +27,7 @@ const ScorePage = async () => {
 </thead>
 <tbody>
   `;
-
+//insert response items into the table lines 
   response
     .sort((a, b) => b.maxScore - a.maxScore)
     .splice(0, 5)
