@@ -1,4 +1,5 @@
 import winIcone from "./../../img/win.png";
+import anime from "animejs";
 
 const ScorePage = async () => {
   let page = document.querySelector("#myPage");
@@ -13,6 +14,7 @@ const ScorePage = async () => {
   let htmlTable = "";
 
   htmlTable = `
+  <canvas class="fireworks"></canvas>
   <div> <img src="${winIcone}" width=780px> </div>
   <table class="table table-light table-striped table-hover mt-0 w-50">
 
@@ -43,6 +45,7 @@ const ScorePage = async () => {
                               </tr>`;
     });
   htmlTable += `</tbody> </table>`;
+ 
   page.innerHTML += htmlTable;
 };
 

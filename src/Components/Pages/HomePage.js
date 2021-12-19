@@ -172,6 +172,15 @@ const HomePage = async () => {
           maxScore = 180;
           nbimages = 18;
         }
+/***************************************************************************************
+*    Title: How to Code a Card Matching Game
+*    Author: Web Dev Simplified
+*    Date: 20/10/2018
+*    Code version: 1.1
+*    Availability:https://www.youtube.com/watch?v=28VfzEiJgy4
+* => for remove level form
+*
+***************************************************************************************/
         //Remove level form
         document.querySelector(".overlay-text").classList.remove("visible");
         //start the game
@@ -248,6 +257,15 @@ const HomePage = async () => {
       };
 
       //this function allows you to rotate the cards in the event of a click during the game
+/***************************************************************************************
+*    Title: Memory Card Game - JavaScript Tutorial
+*    Author: marina-ferreira
+*    Date:   29/08/ 2018
+*    Code version: 1.1
+*    Availability: https://www.youtube.com/watch?v=ZniVgo8U7ek&t=954s
+* => for turn cards when the user click
+*
+***************************************************************************************/
 
       function turneCardsOnClick() {
         cards.forEach((card) =>
@@ -310,6 +328,16 @@ const HomePage = async () => {
           }
         }
       };
+/***************************************************************************************
+*    Title: Memory Card Game - JavaScript Tutorial
+*    Author: marina-ferreira
+*    Date:   29/08/ 2018
+*    Code version: 1.1
+*    Availability: https://www.youtube.com/watch?v=ZniVgo8U7ek&t=954s
+* => for same cards and different cards
+*
+***************************************************************************************/
+
 
       let sameCards = () => {
         let audio = document.getElementById("sameCardsSound");

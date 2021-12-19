@@ -232,6 +232,17 @@ input {
 
 /**********************************************GAME PAGE**********************************************/
 
+
+
+/***************************************************************************************
+*    Title: Memory Card Game - JavaScript Tutorial
+*    Author: marina-ferreira
+*    Date:   29/08/ 2018
+*    Code version: 1.1
+*    Availability: https://www.youtube.com/watch?v=ZniVgo8U7ek&t=954s
+*
+***************************************************************************************/
+
 #game {
   display: block;
   width: 50%;
@@ -296,6 +307,18 @@ input {
 #front-face {
   transform: rotateY(180deg);
 }
+/****************************************End copy code****************************************/
+
+
+/***************************************************************************************
+*    Title: How to Code a Card Matching Game
+*    Author: Web Dev Simplified
+*    Date: 20/10/2018
+*    Code version: 1.1
+*    Availability:https://www.youtube.com/watch?v=28VfzEiJgy4
+* => for remove level form
+*
+***************************************************************************************/
 
 .overlay-text {
   display: none;
@@ -309,6 +332,8 @@ input {
   z-index: 100;
   color: rgb(254, 193, 29);
 }
+
+/****************************************End copy code****************************************/
 #difficulty,
 .titleGameOver,
 .titleWin {
@@ -329,6 +354,8 @@ td {
   font-family: "Dekko", cursive;
   font-size: 15px;
 }
+
+
 
 .overlay-text-small {
   font-size: 0.3em;

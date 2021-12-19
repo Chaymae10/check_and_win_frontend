@@ -60,7 +60,7 @@ const ProfilPage = async () => {
   anime.timeline({ loop: true }).add({
     targets: ".helloProfile",
     translateX: [60, 0],
-    translateZ: 0,
+    translateZ: 10,
     opacity: [0, 1],
     easing: "easeOutExpo",
     duration: 2500,
