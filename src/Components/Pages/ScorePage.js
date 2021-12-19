@@ -1,71 +1,49 @@
 import winIcone from "./../../img/win.png";
 
-
-const ScorePage = async () =>{
+const ScorePage = async () => {
   let page = document.querySelector("#myPage");
   const body = document.querySelector("body");
   body.style.backgroundColor = "rgb(254, 193, 29)";
   page.style.backgroundColor = "rgb(254, 193, 29)";
-    try{
-      const response  = await fetch('/api/scores/top');
-      if (!response.ok) {
-        throw new Error(
-          "fetch error : " + response.status + " : " + response.statusText
-        );
-      }
-      page.innerHTML = "";
-      const container = document.createElement("div");
-      container.className="container-scores mt-5";
-      const scores = await response.json();
-      let image = document.createElement("img");
-      image.src = `${winIcone}`;
-      image.style.width = "780px";
-      image.className="text-center";
-      container.appendChild(image);
-     
-      const scoresTable = document.createElement("table");
-      scoresTable.className="table table-light table-striped table-hover w-150";
-      const thead = document.createElement("thead");
-      const header = document.createElement("tr");
-      thead.appendChild(header);
-      const header0 = document.createElement("th");
-      header0.innerText = "";
-      const header1 = document.createElement("th");
-      header1.className = "th fs-3";
-      header1.innerText = "Username";
-      const header2 = document.createElement("th");
-      header2.className = "th fs-3";
-      header2.innerText = "Meilleur score";
-      header.appendChild(header0);
-      header.appendChild(header1);
-      header.appendChild(header2);
-      scoresTable.appendChild(thead);
-      const tbody = document.createElement("tbody");
-      scores.sort((a, b) => b.maxScore - a.maxScore).splice(0,5).forEach((user,index) => {
-        const line = document.createElement("tr");
-        const indexCell = document.createElement("td");
-        indexCell.className = "th fs-3"
-        indexCell.innerText = "#"+(index+1);
-        line.appendChild(indexCell);
-        const usernameCell = document.createElement("td");
-        usernameCell.innerText = user.username;
-        usernameCell.className = "td fs-3"
-        line.appendChild(usernameCell);
-        const scoreCell = document.createElement("td");
-        scoreCell.className = "td fs-4" 
-        scoreCell.innerText = user.maxScore;
-        line.appendChild(scoreCell);
-        tbody.appendChild(line);
-      });
-      scoresTable.appendChild(tbody);
-      //scoresTableDiv.appendChild(scoresTable);
-      container.appendChild(scoresTable);
-      page.appendChild(container);
-    }catch(error){
-        throw new Error("Another bug :)"+Error);
-    }
+  page.innerHTML = "";
+
+  const res = await fetch("/api/scores/top");
+  const response = await res.json();
+  page.innerHTML = "";
+  let htmlTable = "";
+
+  htmlTable = `
+  <div> <img src="${winIcone}" width=780px> </div>
+  <table class="table table-light table-striped table-hover mt-0 w-50">
+
+  <thead>
+  <tr>
+    <th class="th">  </th>
+    <th class="fs-3 th">Peudo</th>
+    <th class="fs-3 th ">Score</th>
+  </tr>
+</thead>
+<tbody>
+  `;
+
+  response
+    .sort((a, b) => b.maxScore - a.maxScore)
+    .splice(0, 5)
+    .forEach((item, index) => {
+      htmlTable += `<tr class="fs-4">
+                            <td class="th fs-3">
+                              <strong>${index + 1}</strong>                
+                            </td>
+                            <td class="fs-3">
+                              ${item.username}               
+                            </td>
+                              <td class="fs-3">
+                                    ${item.maxScore}             
+                              </td>
+                              </tr>`;
+    });
+  htmlTable += `</tbody> </table>`;
+  page.innerHTML += htmlTable;
 };
-
-
 
 export default ScorePage;
