@@ -6,9 +6,6 @@ const ScorePage = async () =>{
   const body = document.querySelector("body");
   body.style.backgroundColor = "rgb(254, 193, 29)";
   page.style.backgroundColor = "rgb(254, 193, 29)";
-  page.innerHTML = "";
-  const container = document.createElement("div");
-  container.className="container-scores mt-5";
     try{
       const response  = await fetch('/api/scores/top');
       if (!response.ok) {
@@ -16,7 +13,9 @@ const ScorePage = async () =>{
           "fetch error : " + response.status + " : " + response.statusText
         );
       }
-      
+      page.innerHTML = "";
+      const container = document.createElement("div");
+      container.className="container-scores mt-5";
       const scores = await response.json();
       let image = document.createElement("img");
       image.src = `${winIcone}`;
