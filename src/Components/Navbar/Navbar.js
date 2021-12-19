@@ -3,7 +3,9 @@ import { getSessionObject } from "../../utils/session";
 const Navbar = () => {
   const navbarWrapper = document.getElementById("navbarWrapper");
   let navbar = " ";
+  //gey user data from local storage
   const user = getSessionObject("user");
+  //verify if the user is authentificated or not  , in case he's not the navbar will not be available for him
   if (!user) {
     navbar = " ";
   } else if (user) {
